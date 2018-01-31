@@ -38,6 +38,8 @@ class User extends Authenticatable
         'password',
         'introduction',
         'avatar',
+        'weixin_openid',
+        'weixin_unionid',
     ];
 
     /**
