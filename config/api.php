@@ -138,11 +138,11 @@ return [
     */
 
     'errorFormat' => [
-        'message' => ':message',
-        'errors' => ':errors',
-        'code' => ':code',
+        'message'     => ':message',
+        'errors'      => ':errors',
+        'code'        => ':code',
         'status_code' => ':status_code',
-        'debug' => ':debug',
+        'debug'       => ':debug',
     ],
 
     /*
@@ -225,9 +225,32 @@ return [
         'json' => [
             'pretty_print' => env('API_JSON_FORMAT_PRETTY_PRINT_ENABLED', false),
             'indent_style' => env('API_JSON_FORMAT_INDENT_STYLE', 'space'),
-            'indent_size' => env('API_JSON_FORMAT_INDENT_SIZE', 2),
+            'indent_size'  => env('API_JSON_FORMAT_INDENT_SIZE', 2),
         ],
 
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | 接口频率限制
+    |--------------------------------------------------------------------------
+    |
+    | Responses can be returned in multiple formats by registering different
+    | response formatters. You can also customize an existing response
+    | formatter with a number of options to configure its output.
+    |
+    */
+    'rate_limits'    => [
+        // 访问频率限制，次数/分钟
+        'access' => [
+            'expires' => env('RATE_LIMITS_EXPIRES', 1),
+            'limit'   => env('RATE_LIMITS', 60),
+        ],
+        // 登录相关，次数/分钟
+        'sign'   => [
+            'expires' => env('SIGN_RATE_LIMITS_EXPIRES', 1),
+            'limit'   => env('SIGN_RATE_LIMITS', 10),
+        ],
     ],
 
 ];
